@@ -1,0 +1,21 @@
+{
+  "name": "photography",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "multiselect-react-dropdown": "^2.0.21",
+    "js-tokens": "^4.0.0",
+    "object-assign": "^4.1.1",
+    "loose-envify": "^1.4.0",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    
+    },
+  "author": "",
+  "license": "ISC"
+  
+ 
+}
