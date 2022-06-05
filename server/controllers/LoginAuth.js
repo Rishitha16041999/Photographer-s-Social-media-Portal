@@ -10,14 +10,20 @@ export const login = async (req, res) => {
     //Check if db has user with that email
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user) {return res.json({error: "No user found"});}
+    if (!user) {
+      return res.json({ error: "No user found" });
+    }
     //Check password
     const match = await comparePassword(password, user.password);
-    if (!match) {return res.json({error: "Wrong password"});}
+    if (!match) {
+      return res.json({ error: "Wrong password" });
+    }
 
     //Create signed Token
 
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d", });
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
     user.password = undefined;
     user.secret = undefined;
@@ -26,8 +32,7 @@ export const login = async (req, res) => {
       token,
       user,
     });
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
     return res.status(400).send("Error! Try again");
   }
